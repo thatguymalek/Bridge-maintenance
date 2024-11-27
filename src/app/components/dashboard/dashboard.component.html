@@ -1,2 +1,33 @@
-<h1>Dashboard</h1>
-<p>Welcome to the Dashboard page!</p>
+<div class="container my-4">
+  <div class="row g-4">
+    <!-- Total Alerts -->
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Total Alerts</h5>
+          <p class="card-text fs-4 fw-bold">{{ totalAlerts }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Users -->
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Total Users</h5>
+          <p class="card-text fs-4 fw-bold">{{ totalUsers }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- System Status -->
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">System Status</h5>
+          <p class="card-text fs-4 fw-bold">{{ systemStatus }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

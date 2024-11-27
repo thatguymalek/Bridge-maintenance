@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 
+
 @NgModule({
   declarations: [
     DashboardComponent,

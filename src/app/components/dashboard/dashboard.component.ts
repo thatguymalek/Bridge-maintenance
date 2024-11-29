@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  totalAlerts = 0;
-  totalUsers = 0;
-  systemStatus = 'Loading...';
+  totalAlerts: number = 0;
+  totalUsers: number = 0;
+  systemStatus: string = 'Loading...';
 
-  constructor() {}
+  constructor(private dashboardService: DashboardService) {}
 
-  ngOnInit(): void {
-    // Fetch data from API or backend
-    this.fetchDashboardData();
-  }
-
-  fetchDashboardData() {
-    // Example: Replace with actual API calls
-    this.totalAlerts = 50; // Mock data
-    this.totalUsers = 100; // Mock data
-    this.systemStatus = 'Healthy'; // Mock data
+  ngOnInit() {
+    this.dashboardService.getAlertsCount().subscribe((data: { count: number }) => {
+      this.totalAlerts = data.count;
+    });
+    this.dashboardService.getUsersCount().subscribe((data: { count: number }) => {
+      this.totalUsers = data.count;
+    });
+    this.dashboardService.getSystemStatus().subscribe((data: { status: string }) => {
+      this.systemStatus = data.status;
+    });
   }
 }

@@ -1,8 +1,25 @@
-<nav>
-  <button routerLink="/dashboard">Dashboard</button>
-  <button routerLink="/alerts">Alerts</button>
-  <button routerLink="/login">Login</button>
-  <button routerLink="/settings">Settings</button>
-  <button routerLink="/user-management">User Management</button>
-</nav>
-<router-outlet></router-outlet>
+<div class="d-flex">
+  <!-- Sidebar -->
+  <div class="bg-dark text-white sidebar vh-100">
+    <h4 class="p-3">A vous la Maintenance!</h4>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/alerts">Alerts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/settings">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/user-management">User Management</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Content Area -->
+  <div class="content p-3 flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+</div>

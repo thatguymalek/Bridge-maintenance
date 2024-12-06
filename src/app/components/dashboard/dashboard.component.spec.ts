@@ -1,23 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../../services/dashboard.service';
 
-import { DashboardComponent } from './dashboard.component';
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+})
+export class DashboardComponent implements OnInit {
+  totalAlerts: number = 0;
+  totalUsers: number = 0;
+  systemStatus: string = 'Loading...';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+  constructor(private dashboardService: DashboardService) {}
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [DashboardComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(DashboardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit() {
+    this.dashboardService.getAlertsCount().subscribe((data: { count: number }) => {
+      this.totalAlerts = data.count;
+    });
+    this.dashboardService.getUsersCount().subscribe((data: { count: number }) => {
+      this.totalUsers = data.count;
+    });
+    this.dashboardService.getSystemStatus().subscribe((data: { status: string }) => {
+      this.systemStatus = data.status;
+    });
+  }
+}

@@ -1,26 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit {
-  totalAlerts: number = 0;
-  totalUsers: number = 0;
-  systemStatus: string = 'Loading...';
+  totalAlerts: number = 50; // Hardcoded value
+  totalUsers: number = 100; // Hardcoded value
+  systemStatus: string = 'Healthy'; // Hardcoded value
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.dashboardService.getAlertsCount().subscribe((data: { count: number }) => {
-      this.totalAlerts = data.count;
-    });
-    this.dashboardService.getUsersCount().subscribe((data: { count: number }) => {
-      this.totalUsers = data.count;
-    });
-    this.dashboardService.getSystemStatus().subscribe((data: { status: string }) => {
-      this.systemStatus = data.status;
-    });
+    // No service calls, use hardcoded values for now
+    console.log('Dashboard initialized with mock data.');
   }
 }
